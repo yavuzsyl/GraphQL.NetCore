@@ -14,6 +14,8 @@ namespace GraphQLDotNetCore.GraphQLTypes
             Field(x => x.Id, type: typeof(IdGraphType)).Description("Id prop from to nibba Account object lets roll");
             Field(x => x.Description).Description("Description prop from the account object");
             Field(x => x.OwnerId, type: typeof(IdGraphType)).Description("Account objesinin ownerın ait id");
+            //Account.cs içindeki enum tip için oluşturulan GraphQL Enum classı kullanılarak TypeOfAccount enumı resolve edilerek result dönecek
+            Field<AccountTypeEnumType>("Type", "Enum for the account type");
         }
     }
 }
