@@ -78,14 +78,14 @@ namespace GraphQLDotNetCore.Migrations
                         new
                         {
                             Id = new Guid("514c3bc3-14df-4515-bc13-256e75dd2e9f"),
-                            Address = "John Doe's address",
-                            Name = "John Doe"
+                            Address = "Üsküdar",
+                            Name = "Müntekim Gıcırbey"
                         },
                         new
                         {
                             Id = new Guid("791716be-7eff-4370-814e-3884d27ae682"),
-                            Address = "Jane Doe's address",
-                            Name = "Jane Doe"
+                            Address = "Beykoz",
+                            Name = "Abidin Dandini"
                         });
                 });
 

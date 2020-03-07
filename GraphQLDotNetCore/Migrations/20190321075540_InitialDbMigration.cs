@@ -43,12 +43,12 @@ namespace GraphQLDotNetCore.Migrations
             migrationBuilder.InsertData(
                 table: "Owners",
                 columns: new[] { "Id", "Address", "Name" },
-                values: new object[] { new Guid("514c3bc3-14df-4515-bc13-256e75dd2e9f"), "John Doe's address", "John Doe" });
+                values: new object[] { new Guid("514c3bc3-14df-4515-bc13-256e75dd2e9f"), "Üsküdar", "Müntekim Gıcırbey" });
 
             migrationBuilder.InsertData(
                 table: "Owners",
                 columns: new[] { "Id", "Address", "Name" },
-                values: new object[] { new Guid("791716be-7eff-4370-814e-3884d27ae682"), "Jane Doe's address", "Jane Doe" });
+                values: new object[] { new Guid("791716be-7eff-4370-814e-3884d27ae682"), "Beykoz", "Abidin Dandini" });
 
             migrationBuilder.InsertData(
                 table: "Accounts",
