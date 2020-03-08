@@ -39,7 +39,8 @@ namespace GraphQLDotNetCore
 
             //expose exceptions oluşan hataları expose etmeyecek sanırsam , addGraphTypes graphQL tipleri scoped 1 request süresince eklendi // graphQL servisi containera eklend
             services.AddGraphQL(o => { o.ExposeExceptions = false; })
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Scoped)
+                .AddDataLoader();
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
