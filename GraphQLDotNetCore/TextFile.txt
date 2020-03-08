@@ -1,0 +1,103 @@
+﻿Aliases, Fragments, Named Queries, Variables, Directives
+
+Aliases = >
+Farklı argumanlara sahip querylerin resultlarını ayırmak için kullanılırlar
+   first: owner(ownerId:"514c3bc3-14df-4515-bc13-256e75dd2e9f"){
+      id,
+      name,
+      address,
+      accounts
+      {
+        id,
+        description,
+        ownerId,
+        type
+      }
+    }
+  	second: owner(ownerId:"791716be-7eff-4370-814e-3884d27ae682"){
+      id,
+      name,
+      address,
+      accounts
+      {
+        id,
+        description,
+        ownerId,
+        type
+      }
+    }
+
+ Fragments =>
+ Farklı argumanlı queryler için dönecek result tipleri fragmentlar ile belirlenip kullanılablir
+
+ {
+   first: owner(ownerId:"514c3bc3-14df-4515-bc13-256e75dd2e9f"){
+  		...ownerFileds
+      }
+    
+  	second: owner(ownerId:"791716be-7eff-4370-814e-3884d27ae682"){
+     ...ownerFileds
+    }
+}
+
+fragment ownerFileds on OwnerType{
+   		id,
+      name,
+      address,
+      accounts
+      {
+        id,
+        description,
+        ownerId,
+        type
+      }
+  
+}
+
+named queries => 
+isimlendirilmiş queryler 
+query	ownerQuery($ownerId:ID!){
+  owner(ownerId:$ownerId){
+    id,
+    name,
+    address,
+    accounts{
+      id,
+      type
+    }
+  }
+
+}
+QueryVariables => {"ownerId": "514c3bc3-14df-4515-bc13-256e75dd2e9f"} şeklinde verilerek request atılır
+
+
+directives =>
+direktiflere bağlı olarak resultta döncen verilerin gösterip gösterilmeyeceği queryde ayarlanabilir
+@skipt @include
+
+query	ownerQuery($ownerId:ID!, $showName:Boolean!){
+  owner(ownerId:$ownerId){
+    id,
+    name @include(if :$showName),
+    name @skipr(if :$showName)
+    address,
+    accounts{
+      id,
+      type
+    }
+  }
+
+}
+
+{"ownerId": "514c3bc3-14df-4515-bc13-256e75dd2e9f",
+	"showName":false
+}
+
+########################################################
+How to add complex types in GraphQL
+How to write GraphQL queries with arguments
+The way to work with enumerations
+To cache some data by using DataLoader
+How to modify client queries with aliases, names, and fragments
+next mutations post,put,delete
+###################################################################
