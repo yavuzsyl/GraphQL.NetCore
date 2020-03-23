@@ -15,6 +15,8 @@ namespace GraphQLDotNetCore.GraphQL.GraphQLSchema
         {
             //gelen query resolver ile çözümlenir 
             Query = resolver.Resolve<AppQuery>();
+            //gelen mutationlar resolve edilecek appmutation.cs e göre
+            Mutation = resolver.Resolve<AppMutation>();
         }
     }
 }

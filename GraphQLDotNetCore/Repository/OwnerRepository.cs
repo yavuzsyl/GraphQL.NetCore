@@ -15,8 +15,25 @@ namespace GraphQLDotNetCore.Repository
             _context = context;
         }
 
+        public Owner CreateOwner(Owner owner)
+        {
+            owner.Id = Guid.NewGuid();
+            _context.Owners.Add(owner);
+            _context.SaveChanges();
+            return owner;
+        }
+
         public IEnumerable<Owner> GetAll() => _context.Owners.ToList();
 
         public Owner GetById(Guid id) => _context.Owners.SingleOrDefault(o => o.Id.Equals(id));
+
+        public Owner UpdateOwner(Owner dbOwner, Owner owner)
+        {
+            dbOwner.Name = owner.Name;
+            dbOwner.Address = owner.Address;
+
+            _context.SaveChanges();
+            return dbOwner;
+        }
     }
 }

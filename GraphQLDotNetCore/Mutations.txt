@@ -1,0 +1,38 @@
+﻿CRAETE MUTATION
+
+//mutation olacak owner adlı bir parametre alacak ve bu parametre ownerInput tipinde olacak
+//mutation createOwner argümanı owner olacak ve bu argüman gelen parametre olacak 
+
+mutation($owner:ownerInput!){
+	createOwner(owner :$owner){
+			name,
+			address
+	}
+
+}
+
+query variables
+
+{
+  "owner":{
+  	"name": "yavuz",
+    "address": "istanbul"
+	} 
+}
+
+---------------------------------------------------------------------
+
+UPDATE MUTATION
+
+//2 parametre alacak ownerInput ve ID tipinde
+//mutation updateOwner 2 adet argümanı var owner ver ownerId
+
+mutation($owner: ownerInput!, $ownerId : ID!){
+	updateOwner(owner : $owner, ownerId : $ownerId){
+			id,
+			name,
+			address
+	
+	}
+
+}
