@@ -36,3 +36,24 @@ mutation($owner: ownerInput!, $ownerId : ID!){
 	}
 
 }
+
+QUERY VARIABLES
+{
+  "owner": {"name": "yavuz","address": "erzurum"},
+	"ownerId": "f9e2df4b-75bf-4cdd-b8ba-9617e2fb6fca"
+
+}
+-------------------------------------------------------------------
+
+DELETE MUTATION
+
+mutation($ownerId : ID!){
+  deleteOwner(ownerId :$ownerId)
+}
+
+QUERY VARIABLES
+
+{
+	"ownerId": "e84ae21d-7432-4d05-8d38-6e494eb2e74e"
+
+}

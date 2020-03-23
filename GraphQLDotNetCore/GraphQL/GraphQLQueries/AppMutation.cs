@@ -34,7 +34,7 @@ namespace GraphQLDotNetCore.GraphQL.GraphQLQueries
                     new QueryArgument<NonNullGraphType<OwnerInputType>> { Name = "owner" },
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "ownerId" }),
 
-                resolve: context =>
+               resolve: context =>
                {
                    var owner = context.GetArgument<Owner>("owner");
                    var ownerId = context.GetArgument<Guid>("ownerId");
@@ -45,8 +45,26 @@ namespace GraphQLDotNetCore.GraphQL.GraphQLQueries
 
                    context.Errors.Add(new ExecutionError("Couldnt find the owner"));
                    return null;
-               }
-                );
+               });
+
+
+            Field<StringGraphType>(
+                "deleteOwner",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "ownerId" }),
+                resolve: context =>
+                {
+                    var ownerId = context.GetArgument<Guid>("ownerId");
+                    var owner = repository.GetById(ownerId);
+                    if (owner != null)
+                    {
+                        repository.DeleteOwner(owner);
+                        return $"Owner with {ownerId} id deleted";
+                    }
+
+                    context.Errors.Add(new ExecutionError("Couldnt find the user"));
+                    return null;
+
+                });
         }
     }
 }
